@@ -9,7 +9,7 @@ class User extends Component{
 
   handerClick(e){
     import(/* webpackChunkName: 'Model' */'./Model.js').then(({default:Model})=>{
-      console.log('====按需加载Modal')
+      console.info('====按需加载Modal', Model)
     })
   }
 

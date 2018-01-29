@@ -5,6 +5,7 @@ import * as actions  from '../store/actions/anime';
 import {Link} from 'react-router-dom';
 import {Route, Switch } from 'react-router-dom';
 import Helmet from 'react-helmet';
+import Header from '../components/header';
 import  '../assets/css/my.scss'
 
 class Anime extends Component{
@@ -30,11 +31,7 @@ class Anime extends Component{
     console.info(animeInfo)
     return (
       <div>
-        <Helmet>
-          <title>My Home</title>
-          <meta name="description" content="Helmet application" />
-          <meta name="keywords" content="Helmet,application" />
-        </Helmet>
+				<Header title="My Anime" description="anime body" keywords="anime, acg" />
         {
 					weekCn.map((week, index) => <li key={week}>{week}
 						{
