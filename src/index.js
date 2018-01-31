@@ -2,6 +2,8 @@ import React from 'react';
 import {hydrate,render} from 'react-dom';
 import createHistory from 'history/createBrowserHistory'
 import Loadable from 'react-loadable';
+import NProgress from 'nprogress';
+import './assets/css/nprogress.scss';
 import app from './app/index.js';
 
 const initialState = window && window.__INITIAL_STATE__;
@@ -16,8 +18,10 @@ const renderApp=()=>{
 }
 
 window.main = () => {
+  NProgress.start()
   Loadable.preloadReady().then(() => {
     renderApp()
+    NProgress.done()
   });
 };
 

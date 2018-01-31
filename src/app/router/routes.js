@@ -3,7 +3,7 @@ import Loadable from 'react-loadable';
 import { homeThunk, animeThumk } from '../../store/actions/thunk';
 
 const Loading=(props)=>{
-  console.log(props)
+  console.log(props,'loading')
   return <div>Loading...</div>
 }
 

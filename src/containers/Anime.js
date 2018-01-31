@@ -1,11 +1,10 @@
-import React,{Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as actions  from '../store/actions/anime';
-import {Link} from 'react-router-dom';
-import {Route, Switch } from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getAnime } from '../store/actions/anime';
+import Layout from '../components/layout';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import Header from '../components/header';
 import  '../assets/css/my.scss'
 
 class Anime extends Component{
@@ -14,9 +13,10 @@ class Anime extends Component{
     weekEng: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     weekDay: new Date().getDay() - 1,
     weekCn: ['一', '二', '三', '四', '五', '六', '日'],
-  }
+	}
+
   componentDidMount(){
-    this.props.getAnime()
+		this.props.getAnime()
   }
 
   componentDidCatch(error, info) {
@@ -30,17 +30,16 @@ class Anime extends Component{
     const { animeInfo } = this.props;
     console.info(animeInfo)
     return (
-      <div>
-				<Header title="My Anime" description="anime body" keywords="anime, acg" />
+      <Layout title="My Anime" description="anime body" keywords="anime, acg">
         {
 					weekCn.map((week, index) => <li key={week}>{week}
 						{
-							(animeInfo[weekEng[index]] || []).map(item => <p key={item.id}>{item.id}</p>)
+							(animeInfo[weekEng[index]] || []).map(item => <p key={item.id}>标题：{item.title}<br />状态：{item.status}<br />图片：{item.vodPic}</p>)
 						}
 					</li>)
         }
         <Link to='/user'>User</Link>
-      </div>
+      </Layout>
     )
   }
 }
@@ -50,7 +49,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  getAnime: actions.getAnime,
+  getAnime: getAnime,
 }, dispatch)
 
 export default connect(mapStateToProps,mapDispatchToProps)(Anime)
