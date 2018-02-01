@@ -29,9 +29,9 @@ const createTags = (modules) => {
 
 const prepHTML = (data, { html, head, rootString, scripts, styles, initState }) => {
   data = data.replace('<html', `<html ${html}`);
-  data = data.replace('</head>', `${head} \n ${styles}</head>`);
+  data = data.replace('</head>', `${head}${styles}</head>`);
   data = data.replace('<div id="root"></div>', `<div id="root">${rootString}</div>`);
-  data = data.replace('<body>', `<body>\n <script>window.__INITIAL_STATE__ = ${JSON.stringify(initState)}</script>`);
+  data = data.replace('<div id="initState"></div>', `<script>window.__INITIAL_STATE__ = ${JSON.stringify(initState)}</script>`);
   data = data.replace('</body>', `${scripts}</body>`);
   return data;
 }
