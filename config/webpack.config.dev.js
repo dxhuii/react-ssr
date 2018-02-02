@@ -92,7 +92,6 @@ const devConfig={
       minChunks:2
     }),
     new HtmlWebpackPlugin({
-      title:'test1',
       filename:'index.html',
       template:'./index.ejs',
     }),

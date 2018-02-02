@@ -91,7 +91,6 @@ const prodConfig={
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
-      title:'yyy',
       filename:'index.html',
       template:'./index.ejs',
     }),

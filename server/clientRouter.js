@@ -70,7 +70,6 @@ const clientRouter = async(ctx, next) => {
     return route.thunk ? (route.thunk(store)) : Promise.resolve(null)
   });
   await Promise.all(promises).catch(err => console.log('err:---', err))
-
   const isMatch = getMatch(routesConfig, ctx.req.url);
   if(isMatch){
     const renderedHtml = await makeup(ctx, store, createApp, html);

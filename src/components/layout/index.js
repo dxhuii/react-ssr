@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Header from '../header';
 
-class Layout extends Component{
+class Layout extends PureComponent{
 	
   render(){
     const { title, description, keywords } = this.props

@@ -2,22 +2,22 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import { homeThunk, animeThumk } from '../../store/actions/thunk';
 
-const Loading=(props)=>{
-  console.log(props,'loading')
+const Loading =(props) => {
+  console.log('loading')
   return <div>Loading...</div>
 }
 
 const LoadableHome = Loadable({
-  loader: () =>import(/* webpackChunkName: 'Home' */'../../containers/Home'),
+  loader: () => import(/* webpackChunkName: 'Home' */'../../containers/Home'),
   loading: Loading,
 });
 const LoadableUser = Loadable({
-  loader: () =>import(/* webpackChunkName: 'User' */'../../containers/User'),
+  loader: () => import(/* webpackChunkName: 'User' */'../../containers/User'),
   loading: Loading,
 });
 
 const LoadableAnime = Loadable({
-  loader: () =>import(/* webpackChunkName: 'Anime' */'../../containers/Anime'),
+  loader: () => import(/* webpackChunkName: 'Anime' */'../../containers/Anime'),
   loading: Loading,
 });
 

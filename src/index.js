@@ -13,26 +13,23 @@ const store = configureStore(initialState);
 
 const renderApp = () => {
   const application = createApp({ store, history });
-  const renderMethed = process.env.NODE_ENV === 'development' && module.hot ? render : hydrate
+  const renderMethed = process.env.NODE_ENV === 'development' && module.hot ? render : hydrate;
   renderMethed(application, document.getElementById('root'));
 }
 
 window.main = () => {
-  NProgress.start();
+  NProgress.start(); // 进度条开始
   Loadable.preloadReady().then(() => {
     renderApp();
-    NProgress.done();
+    NProgress.done(); // 进度条结束
   });
 };
 
 if(process.env.NODE_ENV === 'development'){
-  if(module.hot){
+  if(module.hot) {
     module.hot.accept('./store/reducers/index.js', () => {
       const newReducer = require('./store/reducers/index.js');
       store.replaceReducer(newReducer)
-      /*import('./store/reducers/index.js').then(({default:module})=>{
-        store.replaceReducer(module)
-      })*/
     })
     module.hot.accept('./app/index.js', () => {
       const { createApp } = require('./app/index.js');
@@ -40,14 +37,6 @@ if(process.env.NODE_ENV === 'development'){
       store.replaceReducer(newReducer);
       const application = createApp({ store, history });
       hydrate(application, document.getElementById('root'));
-      /*import('./app/index.js').then(({default:module})=>{
-        let {createApp}=module;
-        import('./store/reducers/index.js').then(({default:module})=>{
-          store.replaceReducer(module)
-          let application=createApp({store,history});
-          render(application,document.getElementById('root'));
-        })
-      })*/
     })
   }
 }
