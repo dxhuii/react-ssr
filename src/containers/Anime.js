@@ -4,8 +4,6 @@ import { bindActionCreators } from 'redux';
 import { getAnime } from '../store/actions/anime';
 import Layout from '../components/layout';
 import { Link } from 'react-router-dom';
-import Helmet from 'react-helmet';
-import  '../assets/css/my.scss'
 
 class Anime extends Component{
   state = {
@@ -28,7 +26,7 @@ class Anime extends Component{
   render(){
     const { weekDay, weekCn, weekEng } = this.state
     const { animeInfo } = this.props;
-    console.info(animeInfo)
+    console.info(this.props, 'xxxx')
     return (
       <Layout title="My Anime" description="anime body" keywords="anime, acg">
         {
@@ -44,12 +42,12 @@ class Anime extends Component{
   }
 }
 
-const mapStateToProps = (state) => ({
-  animeInfo: state.animeInfo,
+const mapStateToProps = ({ animeInfo }) => ({
+  animeInfo,
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  getAnime: getAnime,
+  getAnime,
 }, dispatch)
 
-export default connect(mapStateToProps,mapDispatchToProps)(Anime)
+export default connect(mapStateToProps, mapDispatchToProps)(Anime)

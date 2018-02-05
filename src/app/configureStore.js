@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 import createHistory from 'history/createMemoryHistory';
 import logger from 'redux-logger';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import rootReducer from '../store/reducers/index.js';
+import rootReducer from '../store/reducers';
 
 const routerReducers = routerMiddleware(createHistory());//路由
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;

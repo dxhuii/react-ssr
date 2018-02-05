@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getAnimeDetail } from '../../store/actions/anime';
 import Layout from '../../components/layout';
 import { Link } from 'react-router-dom';
 
 class Detail extends Component {
+  state = {
+    hasError: false,
+	}
+
+  componentDidMount(){
+    const { id } = this.props.match.params
+		this.props.getAnimeDetail({
+      id
+    })
+  }
+
   componentDidCatch(error, info) {
     this.setState({ hasError: true });
 
@@ -10,14 +24,23 @@ class Detail extends Component {
     console.log('发送错误', error, info)
   }
   render(){
-    const { id } = this.props.match.params
+    const { detailInfo } = this.props
+    console.log( this.props )
     return (
-      <Layout title="My Anime" description="anime body" keywords="anime, acg">
-        { id }
+      <Layout title={ detailInfo.name } description="anime body" keywords="anime, acg">
+        { detailInfo.name }
         <Link to='/anime'>Anime</Link>
       </Layout>
     )
   }
 }
 
-export default Detail
+const mapStateToProps = ({ detailInfo }) => ({
+  detailInfo,
+})
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  getAnimeDetail,
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail)

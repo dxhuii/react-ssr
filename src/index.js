@@ -3,6 +3,7 @@ import { hydrate, render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory'
 import Loadable from 'react-loadable';
 import app from './app';
+import newReducer from './store/reducers';
 
 const initialState = window && window.__INITIAL_STATE__;
 const history = createHistory();
@@ -23,12 +24,10 @@ window.main = () => {
 
 if(process.env.NODE_ENV === 'development'){
   if(module.hot) {
-    const newReducer = require('./store/reducers/index.js');
-    module.hot.accept('./store/reducers/index.js', () => {
+    module.hot.accept(newReducer, () => {
       store.replaceReducer(newReducer)
     })
-    module.hot.accept('./app/index.js', () => {
-      const { createApp } = require('./app/index.js');
+    module.hot.accept(createApp, () => {
       store.replaceReducer(newReducer);
       const application = createApp({ store, history });
       hydrate(application, document.getElementById('root'));

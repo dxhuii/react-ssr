@@ -51,8 +51,8 @@ const makeup = (ctx, store, createApp, html) => {
   const { scripts, styles } = createTags(modules);
   const helmet = Helmet.renderStatic();
   const renderedHtml = prepHTML(html, {
-    html:helmet.htmlAttributes.toString(),
-    head:helmet.title.toString()+helmet.meta.toString()+helmet.link.toString(),
+    html: helmet.htmlAttributes.toString(),
+    head: helmet.title.toString() + helmet.meta.toString() + helmet.link.toString(),
     rootString,
     scripts,
     styles,
@@ -66,8 +66,9 @@ const clientRouter = async(ctx, next) => {
   const html = fs.readFileSync(path.join(path.resolve(__dirname, '../dist'), 'index.html'), 'utf-8');
   const store = createStore(configureStore);
   const branch = matchRoutes(routesConfig, ctx.req.url);
-  const promises = branch.map(({ route, match })=>{
-    return route.thunk ? (route.thunk(store)) : Promise.resolve(null)
+  const promises = branch.map(({ route, match }) => {
+    const params = JSON.stringify(match.params) === '{}' ? route.thunk(store) : route.thunk(store, match.params) // 接口请求是否有入参
+    return route.thunk ? params : Promise.resolve(null)
   });
   await Promise.all(promises).catch(err => console.log('err:---', err))
   const isMatch = getMatch(routesConfig, ctx.req.url);

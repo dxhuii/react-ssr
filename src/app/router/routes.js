@@ -1,6 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
-import { homeThunk, animeThumk } from '../../store/actions/thunk';
+import { homeThunk, animeThumk, detailThumk } from '../../store/actions/thunk';
 
 const Loading =(props) => {
   console.log('loading', props)
@@ -43,11 +43,7 @@ const routesConfig=[{
 }, {
   path: '/anime/:id',
   component: LoadableAnimeDetail,
-  thunk: () => {},
+  thunk: detailThumk,
 }];
 
 export default routesConfig;
-
-
-
-

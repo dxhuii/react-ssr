@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import Routers from './router/index';
+import Routers from './router';
 import Loadable from 'react-loadable';
 
 const createApp = ({ store, history, modules }) => {

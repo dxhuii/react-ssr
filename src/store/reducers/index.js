@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import {counter,homeInfo} from './home';
-import { animeInfo } from './anime';
+import {counter, homeInfo} from './home';
+import { animeInfo, detailInfo } from './anime';
 import { routerReducer } from 'react-router-redux'
 
 export default combineReducers({
@@ -8,4 +8,5 @@ export default combineReducers({
   counter,
   homeInfo,
   animeInfo,
+  detailInfo,
 })
