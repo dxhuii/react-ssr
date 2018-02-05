@@ -3,7 +3,7 @@ import Loadable from 'react-loadable';
 import { homeThunk, animeThumk } from '../../store/actions/thunk';
 
 const Loading =(props) => {
-  console.log('loading')
+  console.log('loading', props)
   return <div>Loading...</div>
 }
 
@@ -21,6 +21,11 @@ const LoadableAnime = Loadable({
   loading: Loading,
 });
 
+const LoadableAnimeDetail = Loadable({
+  loader: () => import(/* webpackChunkName: 'detail' */'../../containers/detail'),
+  loading: Loading,
+});
+
 const routesConfig=[{
   path: '/',
   exact: true,
@@ -35,6 +40,10 @@ const routesConfig=[{
   exact: true,
   component: LoadableAnime,
   thunk: animeThumk,
+}, {
+  path: '/anime/:id',
+  component: LoadableAnimeDetail,
+  thunk: () => {},
 }];
 
 export default routesConfig;

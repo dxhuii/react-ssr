@@ -32,7 +32,8 @@ class Home extends Component{
         <p>{count}</p>
         <p>名字：{name} - 年龄：{age}</p>
         <button style={{backgroundColor:'#eee'}} onClick={()=>add(count+1)}>增加</button>
-        <Link to='/user'>User</Link>
+        <Link to='/user'>User</Link> <br />
+        <Link to='/anime'>Anime</Link>
       </div>
     )
   }

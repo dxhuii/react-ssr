@@ -18,7 +18,8 @@ class User extends Component{
     return (
       <div>
         <p>{count}</p>
-        <Link to='/'>ddsdfd</Link>
+        <Link to='/'>ddsdfd</Link> <br />
+        <Link to='/anime'>Anime</Link>
         <ul>
             {
                 [1,2,3,4,5,6].map((item,index)=>(

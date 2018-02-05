@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from '../header';
 
 class Layout extends PureComponent{
-	
   render(){
     const { title, description, keywords } = this.props
     return (

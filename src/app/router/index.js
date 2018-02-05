@@ -5,9 +5,13 @@ import routesConfig from './routes';
 
 const Routers = ({ history }) => (
   <ConnectedRouter history={history}>
+    <Switch>
     {
-      routesConfig.map(route => <Route key={route.path} exact={route.exact} path={route.path} component={route.component} thunk={route.thunk} />)
+      routesConfig.map(route => {
+        return <Route key={route.path} exact={route.exact} path={route.path} component={route.component} thunk={route.thunk} />
+      })
     }
+    </Switch>
   </ConnectedRouter>
 )
 

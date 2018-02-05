@@ -34,7 +34,7 @@ class Anime extends Component{
         {
 					weekCn.map((week, index) => <li key={week}>{week}
 						{
-							(animeInfo[weekEng[index]] || []).map(item => <p key={item.id}>标题：{item.title}<br />状态：{item.status}<br />图片：{item.vodPic}</p>)
+							(animeInfo[weekEng[index]] || []).map(item => <Link key={item.id} to={`/anime/${item.id}`}>{item.title}</Link>)
 						}
 					</li>)
         }
