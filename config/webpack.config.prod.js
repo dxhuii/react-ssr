@@ -8,6 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const isServer=process.env.BUILD_TYPE==='server';
 const rootPath=path.join(__dirname,'../');
+const config = require('./config');
 
 const prodConfig={
   context: path.join(rootPath,'./src'),
@@ -50,6 +51,9 @@ const prodConfig={
             loader: 'css-loader',//css-loader 是处理css文件中的url(),require()等
             options: {
               minimize:true,
+              importLoaders: 1,
+              modules: true,
+              localIdentName: config.cssModulesClass,
             }
           },{
             loader:'postcss-loader',

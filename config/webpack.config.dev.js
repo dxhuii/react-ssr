@@ -4,7 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const rootPath=path.join(__dirname,'../')
+const rootPath=path.join(__dirname,'../');
+const config = require('./config');
+
 const devConfig={
   context: path.join(rootPath,'./src'),
   entry:{
@@ -51,6 +53,9 @@ const devConfig={
             loader: 'css-loader',//css-loader 是处理css文件中的url(),require()等
             options: {
               sourceMap:true,
+              importLoaders: 1,
+              modules: true,
+              localIdentName: config.cssModulesClass,
             }
           },{
             loader:'postcss-loader',

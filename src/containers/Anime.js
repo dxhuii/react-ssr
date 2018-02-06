@@ -26,7 +26,6 @@ class Anime extends Component{
   render(){
     const { weekDay, weekCn, weekEng } = this.state
     const { animeInfo } = this.props;
-    console.info(this.props, 'xxxx')
     return (
       <Layout title="My Anime" description="anime body" keywords="anime, acg">
         {

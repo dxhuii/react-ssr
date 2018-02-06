@@ -4,7 +4,26 @@ require('babel-register')({
   presets: ['env', 'react', 'stage-0'],
   plugins: ["react-loadable/babel", 'syntax-dynamic-import', "dynamic-import-node"]
 });
+const config = require('../config/config')
 
+
+// Css required hook
+require('css-modules-require-hook')({
+  extensions: ['.scss'],
+  preprocessCss: (data, filename) =>
+      require('node-sass').renderSync({
+          data,
+          file: filename
+      }).css,
+  camelCase: true,
+  generateScopedName: config.cssModulesClass
+})
+
+// Image required hook
+// require('asset-require-hook')({
+//   extensions: ['jpg', 'png', 'gif', 'webp'],
+//   limit: 8000
+// })
 
 const app = require('./app.js').default,
   clientRouter = require('./clientRouter.js').default,
