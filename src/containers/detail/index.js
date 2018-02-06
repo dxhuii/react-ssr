@@ -12,8 +12,8 @@ class Detail extends Component {
 	}
 
   componentDidMount(){
-    const { id } = this.props.match.params
-		this.props.getAnimeDetail(id)
+    const { params } = this.props.match
+		this.props.getAnimeDetail(params)
   }
 
   componentDidCatch(error, info) {
