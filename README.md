@@ -136,5 +136,5 @@ if (!isLogin) {
 
 ## 感谢
 
-> 本脚手架基于以下脚手架修改而来
-> React 同构脚手架 https://github.com/54sword/react-starter
+> - 本脚手架基于以下脚手架修改而来
+> - React 同构脚手架 https://github.com/54sword/react-starter
