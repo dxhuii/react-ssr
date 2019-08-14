@@ -1,0 +1,290 @@
+@font-face {
+    font-family: "Monospaced Number";
+    src: local("Tahoma");
+    unicode-range: U+30-39;
+}
+
+@font-face {
+    font-family: "Chinese Quote";
+    src: local("PingFang SC"), local("SimSun");
+    unicode-range: U+2018, U+2019, U+201c, U+201d;
+}
+
+@font-face {
+    font-family: 'iconfont';
+    /* project id 447392 */
+    src: url('//at.alicdn.com/t/font_447392_bgkpd5npuvh.eot');
+    src: url('//at.alicdn.com/t/font_447392_bgkpd5npuvh.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_447392_bgkpd5npuvh.woff') format('woff'), url('//at.alicdn.com/t/font_447392_bgkpd5npuvh.ttf') format('truetype'), url('//at.alicdn.com/t/font_447392_bgkpd5npuvh.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:global {
+    * {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    a,
+    img,
+    button,
+    input,
+    textarea,
+    div {
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    }
+
+    body,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    form,
+    fieldset,
+    legend,
+    input,
+    textarea,
+    p,
+    img,
+    hr {
+        margin: 0;
+        padding: 0;
+        vertical-align: baseline;
+    }
+
+    fieldset,
+    img {
+        border: 0;
+    }
+
+    em,
+    th,
+    td,
+    i {
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    ol,
+    ul,
+    li {
+        list-style: none;
+    }
+
+    caption,
+    th {
+        text-align: left;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 100%;
+        font-weight: normal;
+    }
+
+    input,
+    textarea,
+    select {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+    legend {
+        color: #000;
+    }
+
+    button {
+        background: none;
+        border: none;
+    }
+
+    hr {
+        color: #f5f2ee;
+        background-color: #f5f2ee;
+        border: none;
+        height: 1px;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    html {
+        text-size-adjust: none;
+    }
+
+    body {
+        font-size: 14px;
+        font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+        overflow: auto;
+        text-rendering: optimizeLegibility;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+    }
+
+    input,
+    button {
+        outline: none;
+    }
+
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        box-shadow: 0 0 0 1000px white inset;
+    }
+
+    p {
+        word-wrap: break-word;
+    }
+
+    a {
+        color: #233;
+        text-decoration: none;
+        transition: all .15s ease-out;
+    }
+
+    a:hover {
+        color: #00a1d6;
+        text-decoration: none;
+    }
+
+    a,
+    span {
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        -webkit-user-select: none;
+        -moz-user-focus: none;
+        -moz-user-select: none;
+    }
+
+    i {
+        overflow: hidden;
+    }
+
+    .clearfix:after {
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+    .pr {
+        position: relative;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #666;
+    }
+
+    ::-moz-placeholder {
+        color: #666;
+    }
+
+    :-moz-placeholder {
+        color: #666;
+    }
+
+    ::-ms-input-placeholder {
+        color: #666;
+    }
+
+    input:-moz-placeholder {
+        color: #666;
+    }
+
+    textarea:-moz-placeholder {
+        color: #666;
+    }
+
+    .wp {
+        width: 1240px;
+        margin: auto;
+    }
+
+    .mt20 {
+        margin-top: 20px;
+    }
+
+    .mt10 {
+        margin-top: 10px;
+    }
+
+    .pt15 {
+        padding-top: 15px;
+    }
+
+    .pt20 {
+        padding-top: 20px;
+    }
+
+    .pb20 {
+        padding-bottom: 20px !important;
+    }
+
+    body {
+        padding-top: 55px;
+        background-color: #f6f6f6;
+    }
+
+    html {
+        &::-webkit-scrollbar {
+            width: 7px;
+            height: 7px
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 1em;
+            background-color: rgba(50, 50, 50, 0.3)
+        }
+
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(100, 100, 100, 0.8)
+        }
+
+        &::-webkit-scrollbar-corner,
+        &::-webkit-scrollbar-thumb:window-inactive {
+            background: rgba(100, 100, 100, 0.4)
+        }
+    }
+
+    .iconfont {
+        font-family: "iconfont" !important;
+        font-size: 16px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

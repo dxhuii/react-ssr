@@ -1,0 +1,16 @@
+.list {
+    margin: 20px;
+    display: flex;
+    flex-flow: wrap;
+
+    a {
+        width: 20%;
+        margin-right: 2%;
+        margin-top: 10px;
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
+}
