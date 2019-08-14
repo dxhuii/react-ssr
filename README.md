@@ -132,4 +132,9 @@ if (!isLogin) {
 
 - 使用 `offline-plugin` 插件
 
->  注：项目里面包含了对 vscode 的配置
+> 注：项目里面包含了对 vscode 的配置
+
+## 感谢
+
+> 本脚手架基于以下脚手架修改而来
+> React 同构脚手架 https://github.com/54sword/react-starter
