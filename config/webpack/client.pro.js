@@ -2,6 +2,8 @@ const baseConfig = require('./client.base')
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const OfflinePlugin = require('offline-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const webpackConfig = {
   ...baseConfig,
@@ -20,6 +22,9 @@ const webpackConfig = {
         }
       }
     }),
+    // 清空打包目录
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([{ from: 'src/app/static/favicon.ico', to: 'favicon.ico' }]),
     new BundleAnalyzerPlugin(),
     new OfflinePlugin({
       autoUpdate: 1000 * 60 * 5,

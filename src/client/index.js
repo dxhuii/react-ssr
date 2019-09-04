@@ -12,11 +12,11 @@ import configureStore from '@/store'
 import createRouter from '@/router'
 import { getUserInfo } from '@/store/reducers/user'
 
-import { GA, DOMAIN } from 'Config'
+import { GA, DOMAIN, debug } from 'Config'
 import { loadScript } from '@/utils/loadScript'
 
 import * as OfflinePluginRuntime from 'offline-plugin/runtime'
-if (process.env.NODE_ENV !== 'development') {
+if (!debug) {
   OfflinePluginRuntime.install()
   OfflinePluginRuntime.applyUpdate()
   const { origin, pathname } = window.location
@@ -35,14 +35,14 @@ if (process.env.NODE_ENV !== 'development') {
   const store = configureStore(window.__initState__)
   let userinfo = getUserInfo(store.getState())
   if (!userinfo || !userinfo.userid) userinfo = null
-  let logPageView = () => {}
+  let enterEvent = () => {}
   const { pathname } = window.location
   if (GA) {
     ReactGA.initialize(GA)
-    logPageView = userinfo => {
+    enterEvent = userinfo => {
       let option = { page: pathname }
       if (userinfo && userinfo._id) option.userId = userinfo._id
-      if (process.env.NODE_ENV !== 'development') {
+      if (!debug) {
         ReactGA.set(option)
         ReactGA.pageview(pathname)
         window._hmt && window._hmt.push(['_trackPageview', pathname])
@@ -52,8 +52,8 @@ if (process.env.NODE_ENV !== 'development') {
     }
   }
 
-  const router = createRouter(userinfo, logPageView)
-  const RouterDom = router.dom
+  const router = createRouter({ user: userinfo, enterEvent })
+  const Page = router.dom
 
   let _route = null
 
@@ -66,18 +66,18 @@ if (process.env.NODE_ENV !== 'development') {
   })
 
   // 预先加载首屏的js（否则会出现，loading 一闪的情况）
-  await _route.component.preload()
+  await _route.body.preload()
 
   ReactDOM.hydrate(
     <Provider store={store}>
       <BrowserRouter>
-        <RouterDom />
+        <Page />
       </BrowserRouter>
     </Provider>,
     document.getElementById('app')
   )
 
-  if (process.env.NODE_ENV === 'development') {
+  if (debug) {
     if (module.hot) {
       module.hot.accept()
     }

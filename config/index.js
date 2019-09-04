@@ -22,6 +22,7 @@ const config = {
   HEAD: `<meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="icon" href="/favicon.ico" />
   `,
   API: 'https://api.douban.com/',
   NAME: '网站标题',
@@ -39,15 +40,13 @@ const config = {
   ICP: '沪ICP备1234567号' // 备案号
 }
 
-config.HEAD += `<link rel="icon" href="/favicon.ico" />`
-
 // 开发环境配置
 if (process.env.NODE_ENV == 'development') {
   config.debug = true
-  config.PORT = 4000
+  config.PORT = 7000
   config.CLASS_SCOPED_NAME = '[name]_[local]__[hash:base64:5]'
-  config.DOMAIN = '//localhost:4000'
-  config.PUBLIC_PATH = 'http://localhost:4000'
+  config.DOMAIN = '//localhost:' + config.PORT
+  config.PUBLIC_PATH = 'http://localhost:' + config.PORT
 }
 
 module.exports = config

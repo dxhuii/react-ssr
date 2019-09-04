@@ -1,19 +1,17 @@
-import merge from 'lodash/merge'
+import cloneObj from '../clone'
 
 export default function() {
   let initialState = {}
-  return function detail(state = initialState, action = {}) {
+  return function detail(state = cloneObj(initialState), action = {}) {
     const { data, name } = action
     switch (action.type) {
       case 'GET_DETAIL':
-        state[name] = data
-        return merge({}, state, {})
-      case 'CLEAN':
-        return {}
-
+        if ((name, data)) state[name] = data
+        break
       default:
         return state
     }
+    return cloneObj(state)
   }
 }
 

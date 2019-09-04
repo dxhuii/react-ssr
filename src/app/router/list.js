@@ -8,15 +8,17 @@ import Loading from '@/components/Ui/Loading'
 import HomeLoadData from '@/pages/home/load-data'
 import detailData from '@/pages/detail/load-data'
 
+const exact = true
+const base = { exact, head: Head, footer: Footer }
+const loading = () => <Loading />
+
 export default [
   {
     path: '/',
-    exact: true,
-    head: Head,
-    footer: Footer,
-    component: Loadable({
+    ...base,
+    body: Loadable({
       loader: () => import('@/pages/home'),
-      loading: () => <Loading />
+      loading
     }),
     loadData: HomeLoadData,
     enter: 'everybody'
@@ -24,12 +26,10 @@ export default [
 
   {
     path: '/detail/:id',
-    exact: true,
-    head: Head,
-    footer: Footer,
-    component: Loadable({
+    ...base,
+    body: Loadable({
       loader: () => import('@/pages/detail'),
-      loading: () => <Loading />
+      loading
     }),
     loadData: detailData,
     enter: 'everybody'
@@ -39,9 +39,9 @@ export default [
     path: '**',
     head: Head,
     footer: Footer,
-    component: Loadable({
+    body: Loadable({
       loader: () => import('@/pages/not-found'),
-      loading: () => <Loading />
+      loading
     }),
     enter: 'everybody'
   }
