@@ -24,7 +24,7 @@ const config = {
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
     <link rel="icon" href="/favicon.ico" />
   `,
-  API: 'https://api.douban.com/',
+  API: 'https://www.printf520.com:8080/',
   NAME: '网站标题',
   DESCRIBE: '网站简短介绍',
   KEYWORDS: '关键词',

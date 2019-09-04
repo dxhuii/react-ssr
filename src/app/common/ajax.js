@@ -3,7 +3,6 @@ import qs from 'qs'
 
 const AJAX = ({ url = '', method = 'get', data = {}, headers = {} }) => {
   let option = { url, method, headers }
-  data.apikey = '0df993c66c0c636e29ecbb5344252a4a'
   // 处理URL里面带有冒号
   Object.keys(data).forEach(key => {
     if (option.url.indexOf(':' + key) > -1) {

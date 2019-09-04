@@ -20,7 +20,7 @@ export default [
       loader: () => import('@/pages/home'),
       loading
     }),
-    loadData: HomeLoadData,
+    // loadData: HomeLoadData,
     enter: 'everybody'
   },
 

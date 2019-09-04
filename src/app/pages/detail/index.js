@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 // redux
 import { useSelector, useStore } from 'react-redux'
-import { detail } from '@/store/actions/detail'
-import { getDetail } from '@/store/reducers/detail'
+import { typeInfo } from '@/store/actions/info'
+import { getInfo } from '@/store/reducers/info'
 
 import Shell from '@/components/Shell'
 import Meta from '@/components/Meta'
@@ -19,15 +19,15 @@ export default Shell(function() {
 
   console.log(useReactRouter(), 'useReactRouter()')
 
-  const info = useSelector(state => getDetail(state, id))
+  const info = useSelector(state => getInfo(state, id))
 
   const store = useStore()
 
   useEffect(() => {
-    const _detail = args => detail(args)(store.dispatch, store.getState)
+    const getData = args => typeInfo(args)(store.dispatch, store.getState)
     // 如果已经存在 info，说明redux已经存在该帖子数据，则可以不重新请求
     if (!info || !info.data) {
-      _detail({
+      getData({
         id
       })
     }

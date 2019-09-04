@@ -1,4 +1,4 @@
-import { detail } from '@/store/actions/detail'
+import { info } from '@/store/actions/info'
 
 export default ({ store, match, user }) => {
   return new Promise(async resolve => {
@@ -8,7 +8,7 @@ export default ({ store, match, user }) => {
       return
     }
     const { id } = match.params
-    await detail({ id })(store.dispatch, store.getState)
+    await info({ id })(store.dispatch, store.getState)
     resolve({ code: 200 })
   })
 }

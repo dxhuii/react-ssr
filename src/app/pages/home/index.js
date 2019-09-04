@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
+import useReactRouter from 'use-react-router'
 import { Link } from 'react-router-dom'
 
 // redux
 import { useSelector, useStore } from 'react-redux'
-import { top250 } from '@/store/actions/list'
-import { getList } from '@/store/reducers/list'
+import { type } from '@/store/actions/type'
+import { typeInfo } from '@/store/actions/info'
+import { getType } from '@/store/reducers/type'
+import { getInfo } from '@/store/reducers/info'
 
 // 壳组件
 import Shell from '@/components/Shell'
@@ -16,21 +19,39 @@ import { DESCRIBE, KEYWORDS, DESCRIPTION } from 'Config'
 import './style.scss'
 
 export default Shell(function() {
-  const info = useSelector(state => getList(state, 'top250'))
+  const { match } = useReactRouter()
+  const { id } = match.params || {}
+  const typeData = useSelector(state => getType(state))
+  const infoData = useSelector(state => getInfo(state, id))
   const store = useStore()
 
   useEffect(() => {
-    const _top250 = () => top250()(store.dispatch, store.getState)
-    const res = info.data || {}
-    if ((res.subjects || []).length === 0) _top250()
-    ArriveFooter.add('index', _top250)
-    return () => {
-      ArriveFooter.remove('index')
+    async function get() {
+      const getTypeData = () => type()(store.dispatch, store.getState)
+      const getInfoData = args => typeInfo(args)(store.dispatch, store.getState)
+      if (!typeData || !typeData.data) {
+        let [, data] = await getTypeData()
+        const id = data.data[0].id
+        if (!infoData || !infoData.data) {
+          getInfoData({
+            id
+          })
+        }
+      } else {
+        if ((!infoData || !infoData.data) && id) {
+          getInfoData({
+            id
+          })
+        }
+      }
     }
-  }, [info.data, store.dispatch, store.getState])
+    get()
+  }, [typeData, typeData.data, store.dispatch, store.getState, infoData, id])
 
-  const { loading, data = {} } = info || {}
+  const { loading, data = {} } = typeData || {}
   const { title, subjects = [], total } = data
+
+  console.log(infoData)
 
   return (
     <div className="wp mt20">
