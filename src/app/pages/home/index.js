@@ -71,7 +71,7 @@ export default Shell(function() {
       <div styleName="right">
         <div styleName="title">
           <div styleName="menu">三</div>
-          <h2>{getMenuTitle()}</h2>
+          <h2>{getMenuTitle() || (list[0] || []).title}</h2>
         </div>
         {loading ? (
           <Loading />
