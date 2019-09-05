@@ -6,10 +6,9 @@ import Footer from '@/components/Footer'
 import Loading from '@/components/Ui/Loading'
 
 import HomeLoadData from '@/pages/home/load-data'
-import detailData from '@/pages/detail/load-data'
 
 const exact = true
-const base = { exact, head: Head, footer: Footer }
+const base = { exact, footer: Footer }
 const loading = () => <Loading />
 
 export default [
@@ -20,24 +19,23 @@ export default [
       loader: () => import('@/pages/home'),
       loading
     }),
-    // loadData: HomeLoadData,
+    loadData: HomeLoadData,
     enter: 'everybody'
   },
 
   {
-    path: '/detail/:id',
+    path: '/:id',
     ...base,
     body: Loadable({
-      loader: () => import('@/pages/detail'),
+      loader: () => import('@/pages/home'),
       loading
     }),
-    loadData: detailData,
+    loadData: HomeLoadData,
     enter: 'everybody'
   },
 
   {
     path: '**',
-    head: Head,
     footer: Footer,
     body: Loadable({
       loader: () => import('@/pages/not-found'),

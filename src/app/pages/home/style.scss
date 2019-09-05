@@ -1,16 +1,103 @@
-.list {
-    margin: 20px;
+@import '../_mixin.scss';
+
+.content {
     display: flex;
-    flex-flow: wrap;
+    position: relative;
+    padding-left: 300px;
+}
 
-    a {
-        width: 20%;
-        margin-right: 2%;
-        margin-top: 10px;
+.right {
+    flex: 1;
+    position: relative;
 
-        img {
-            width: 100%;
-            display: block;
+    .title {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding-left: 10px;
+        height: 48px;
+        line-height: 48px;
+        background-color: #333;
+        color: #fff;
+        display: flex;
+
+        h2 {
+            flex-flow: 1;
+            margin-left: 10px;
+        }
+    }
+
+    .list {
+        margin: 68px 20px 0 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+
+            h4 {
+                font-size: 14px;
+            }
+
+            p {
+                margin-top: 10px;
+                color: #999;
+                font-size: 12px;
+                @include clamp(2);
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            &:hover {
+                background-color: #f7f7f7;
+            }
+        }
+    }
+}
+
+.left {
+    position: fixed;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+
+    .title {
+        padding: 0 10px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 18px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .menu {
+        padding: 0 10px;
+
+        li {
+            height: 48px;
+            line-height: 48px;
+            font-size: 16px;
+
+            a {
+                display: block;
+            }
+
+            &.cur {
+                background-color: #666;
+                margin: 0 -10px;
+                padding: 0 10px;
+
+                a {
+                    color: #fff;
+                }
+            }
         }
     }
 }
